@@ -1,0 +1,39 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id        Int      @id @default(autoincrement())
+  email     String   @unique
+  createdAt DateTime @default(now())
+  records   Record[]
+}
+
+model Record {
+  id             Int      @id @default(autoincrement())
+  userId         Int      @map("user_id")
+  date           DateTime @default(now())
+  weight         Float?   // Peso en kg
+  bmi            Float?   // Índice de Masa Corporal
+  bodyFat        Float?   // Porcentaje de grasa corporal
+  water          Float?   // Porcentaje de agua
+  metabolism     Float?   // Tasa metabólica basal (kcal)
+  visceralFat    Float?   // Grasa visceral
+  boneFat        Float?   // Grasa ósea
+  protein        Float?   // Porcentaje de proteína
+  muscle         Float?   // Porcentaje de músculo
+  bodyAge        Float?   // Edad corporal
+  idealWeight    Float?   // Peso ideal sugerido
+  alcoholUnits   Float?   // Unidades de alcohol
+  alcoholCalories Float?  // Calorías de alcohol
+  dietLog        String?  // "excedido", "bien", "muy bien"
+  activeHours    Float?   // Horas de pie
+  caloriesBurned Float?   // Kcal quemadas
+  createdAt      DateTime @default(now())
+  user           User     @relation(fields: [userId], references: [id])
+}
