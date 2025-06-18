@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Calorie Tracker - Health Manager</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 min-h-screen">
+  <div class="container mx-auto py-8">
+    <h1 class="text-3xl font-bold text-center mb-8 text-gray-800">Calorie Tracker</h1>
+    <div id="root"></div>
+  </div>
+  
+  <script type="module">
+    // Note: In production, you would use a proper build system
+    // This is a simplified version for demonstration
+    console.log('Calorie Tracker loaded');
+    
+    // Add basic interactivity here or load your React components
+    document.getElementById('root').innerHTML = `
+      <div class="max-w-md mx-auto bg-white rounded-lg shadow-md p-6">
+        <h2 class="text-xl font-semibold mb-4">Health Record Form</h2>
+        <p class="text-gray-600 mb-4">Use the API endpoints to manage your health records:</p>
+        <ul class="space-y-2 text-sm">
+          <li><strong>POST /records</strong> - Create new record</li>
+          <li><strong>GET /records/:userId</strong> - Get user records</li>
+          <li><strong>PUT /records/:id</strong> - Update record</li>
+          <li><strong>DELETE /records/:id</strong> - Delete record</li>
+        </ul>
+        <div class="mt-6">
+          <a href="/health" class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">
+            Check API Health
+          </a>
+        </div>
+      </div>
+    `;
+  </script>
+</body>
+</html>
